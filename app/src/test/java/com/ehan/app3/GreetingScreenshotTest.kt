@@ -1,8 +1,9 @@
-package com.example.template
+package com.ehan.app3
 
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onRoot
-import com.example.template.ui.theme.TemplateTheme
+import com.ehan.app3.ui.theme.App3Theme
+import com.ehan.app3.GreetingPreview
 import com.github.takahirom.roborazzi.RobolectricDeviceQualifiers
 import com.github.takahirom.roborazzi.captureRoboImage
 import org.junit.Rule
@@ -14,23 +15,21 @@ import org.robolectric.annotation.GraphicsMode
 
 @RunWith(RobolectricTestRunner::class)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
-@Config(qualifiers =
-        //RobolectricDeviceQualifiers.Pixel8
-        "+land", sdk = [36])
+@Config(qualifiers = RobolectricDeviceQualifiers.Pixel8, sdk = [36])
 class GreetingScreenshotTest {
 
-  @get:Rule
-  val composeTestRule = createComposeRule()
+  @get:Rule val composeTestRule = createComposeRule()
 
   @Test
-  fun greetingScreenshot() {
-    composeTestRule.setContent { TemplateTheme { GreetingPreview() } }
+  fun greeting_screenshot() {
+    composeTestRule.setContent { GreetingPreview() }
 
     composeTestRule.onRoot().captureRoboImage(filePath = "src/test/screenshots/greeting.png")
   }
+
   @Test
-  fun greeting2Screenshot() {
-    composeTestRule.setContent { TemplateTheme { Greeting("Robolectric") } }
+  fun greeting2_screenshot() {
+    composeTestRule.setContent { App3Theme { Greeting("Robolectric") } }
 
     composeTestRule.onRoot().captureRoboImage(filePath = "src/test/screenshots/greeting2.png")
   }

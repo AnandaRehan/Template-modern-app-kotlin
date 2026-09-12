@@ -1,4 +1,4 @@
-package com.example.template
+package com.ehan.app3
 
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
@@ -12,16 +12,10 @@ import org.robolectric.annotation.Config
 @Config(sdk = [36])
 class ExampleRobolectricTest {
 
-  /**@Test
+  @Test
   fun `read string from context`() {
     val context = ApplicationProvider.getApplicationContext<Context>()
     val appName = context.getString(R.string.app_name)
-    assertEquals("Template", appName)
-  }*/
-  @Test
-  fun readStringFromContext() {
-    val context = ApplicationProvider.getApplicationContext<Context>()
-    val appName = context.getString(R.string.app_name)
-    assertEquals("Template", appName)
+    assertEquals("app3", appName)
   }
 }

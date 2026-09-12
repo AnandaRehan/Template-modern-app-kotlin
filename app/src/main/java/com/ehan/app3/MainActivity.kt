@@ -1,4 +1,4 @@
-package com.example.template
+package com.ehan.app3
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -26,11 +26,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.example.template.ui.theme.TemplateTheme
+import com.ehan.app3.ui.theme.App3Theme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +38,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         
         setContent {
-            TemplateTheme {
+            App3Theme(
+                darkTheme = true
+            ) {
                 Greeting(
                     name = "Template"
                 )
@@ -56,8 +58,16 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
                 .padding(innerPadding)
         ) {
             Text(
-                text = name
+	            text = name
             )
+            Column(
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = name
+                )
+            }
         }
     }
 }
@@ -67,5 +77,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    Greeting("Android")
+    App3Theme {
+        Greeting("Android")
+    }
 }

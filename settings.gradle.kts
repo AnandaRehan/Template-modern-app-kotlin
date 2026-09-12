@@ -22,6 +22,6 @@ dependencyResolutionManagement {
   }
 }
 
-rootProject.name = "Template"
+rootProject.name = "app3"
 
 include(":app")

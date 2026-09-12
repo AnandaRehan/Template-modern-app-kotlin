@@ -42,7 +42,7 @@ jobs:
       - name: Upload Debug APK
         uses: actions/upload-artifact@v6
         with:
-          name: template-debug-apk
+          name: app3-debug-apk
           path: app/build/outputs/apk/debug/*.apk
 
       - name: Upload Test Results
