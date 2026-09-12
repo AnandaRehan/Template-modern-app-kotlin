@@ -1,4 +1,4 @@
-package com.example
+package com.example.template
 
 import org.junit.Assert.*
 import org.junit.Test
