@@ -1,4 +1,4 @@
-package com.ehan.app3.ui.theme
+package com.example.template.ui.theme
 
 import android.app.Activity
 import android.os.Build
@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import com.example.template.data.repository.SettingsRepository
 
 private val DarkColorScheme = darkColorScheme(
     primary = PrimaryDark,
@@ -62,11 +63,17 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun App3Theme(
-    darkTheme: Boolean = false,
+fun TemplateTheme(
+    themeMode: String = SettingsRepository.THEME_SYSTEM,
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
+    val darkTheme = when (themeMode) {
+        SettingsRepository.THEME_DARK -> true
+        SettingsRepository.THEME_LIGHT -> false
+        else -> isSystemInDarkTheme()
+    }
+
     val context = LocalContext.current
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
@@ -74,15 +81,6 @@ fun App3Theme(
         }
         darkTheme -> DarkColorScheme
         else -> LightColorScheme
-    }
-
-    val view = LocalView.current
-    if (!view.isInEditMode) {
-        SideEffect {
-            val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.background.toArgb()
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
-        }
     }
 
     MaterialTheme(

@@ -1,4 +1,4 @@
-package com.ehan.app3.ui.theme
+package com.example.template.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
